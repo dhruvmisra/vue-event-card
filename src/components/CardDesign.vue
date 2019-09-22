@@ -17,7 +17,7 @@
             <div class="col-sm-12 col-md-8 px-0">
               <h4>Description</h4>
               <p>{{ event.description }}</p>
-              <AppButton class="register my-4">Register</AppButton>
+              <!-- <AppButton class="register my-4">Register</AppButton> -->
             </div>
             <div class="poster ml-auto">
               <img :src="getImgUrl(event.image)" :alt="event.name" class="w-100">
@@ -30,34 +30,31 @@
 
 <script>
 export default {
-  // props: {
-  //   event: Object
-  // },
+  props: {
+    event: Object,
+  },
   data() {
     return {
       full: false,
-      hover: false,
-      event: {
-        title: 'Event Name',
-
-      }
+      hover: false
     }
   },
-  created() {
-    if(this.event.name == this.$route.query.from) {
-      this.full = true;
-      setTimeout(() => {
-        this.full = false;
-      }, 10)
-    }
-  },
+  // created() {
+  //   if(this.event.name == this.$route.query.from) {
+  //     this.full = true;
+  //     setTimeout(() => {
+  //       this.full = false;
+  //     }, 10)
+  //   }
+  // },
   methods: {
     goToEvent() {
-      // this.full = !this.full;
-      this.full = true;
-      setTimeout(() => {
-        this.$router.push('/events/' + this.event.name);
-      }, 700);
+      this.full = !this.full;
+      this.$emit('clicked', this.event.name);
+      // this.full = true;
+      // setTimeout(() => {
+      //   this.$router.push('/events/' + this.event.name);
+      // }, 700);
     },
     getImgUrl(img) {
       return require('../assets/images/' + img);
@@ -76,7 +73,7 @@ export default {
   margin: 20px;
   cursor: pointer;
   transition: all 300ms ease-out;
-  transform: rotate(-3deg);
+  /* transform: rotate(-3deg); */
 }
 .card:hover {
   transform: scale(1.02);
@@ -119,11 +116,12 @@ export default {
   font-weight: bold;
   padding: 30px;
   text-align: center;
-  text-shadow: 0 0 5px rgb(0, 255, 221);
+  /* text-shadow: 0 0 4px yellow; */
   z-index: 2;
 }
 .title {
   position: relative;
+  color: yellow;
   font-weight: 500;
   font-size: 1.5em;
   margin-top: 30px;
@@ -152,6 +150,7 @@ export default {
 }
 .date {
   font-size: 1.2em;
+  color: yellow;
   opacity: 0;
   transition: font-size 200ms ease-out;
 }
@@ -172,7 +171,7 @@ export default {
 }
 
 .card.full {
-  position: fixed;
+  position: relative;
   top: 0;
   left: 0;
   height: 100vh;
