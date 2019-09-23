@@ -7,6 +7,7 @@
 <style>
 body {
   background: #000 !important;
+  min-height: 100vh;
   overflow-x: hidden;
 }
 
