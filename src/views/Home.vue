@@ -31,28 +31,36 @@ export default {
           date: "October 11, 2019",
           description:
             "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem veritatis ea sint voluptatum vel rerum ipsum illo architecto repellat debitis corporis ex, ut explicabo! Voluptatum commodi dignissimos nihil cumque mollitia?",
-          image: "coding.jpg"
+          image: "coding.jpg",
+          teamSize: '2',
+          time: '10AM - 1PM'
         },
         {
           name: "Hackathon",
           date: "October 11, 2019",
           description:
             "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem veritatis ea sint voluptatum vel rerum ipsum illo architecto repellat debitis corporis ex, ut explicabo! Voluptatum commodi dignissimos nihil cumque mollitia?",
-          image: "hackathon.jpg"
+          image: "hackathon.jpg",
+          teamSize: '2',
+          time: '12PM - 8PM'
         },
         {
           name: "Treasure Hunt",
           date: "October 12, 2019",
           description:
             "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem veritatis ea sint voluptatum vel rerum ipsum illo architecto repellat debitis corporis ex, ut explicabo! Voluptatum commodi dignissimos nihil cumque mollitia?",
-          image: "treasure.jpg"
+          image: "treasure.jpg",
+          teamSize: '2',
+          time: '4PM - 6PM'
         },
         {
           name: "Marvel Quiz",
           date: "October 13, 2019",
           description:
             "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem veritatis ea sint voluptatum vel rerum ipsum illo architecto repellat debitis corporis ex, ut explicabo! Voluptatum commodi dignissimos nihil cumque mollitia?",
-          image: "marvel.jpg"
+          image: "marvel.jpg",
+          teamSize: '2',
+          time: '3PM - 5PM'
         }
       ]
     };

@@ -17,17 +17,16 @@
         </div>
         <transition name="slide-left" tag="div">
           <div class="info row m-0" v-if="full">
-            <div class="col-sm-12 col-md-6 px-0">
+            <div class="text col-sm-12 col-md-6 px-0">
               <h4>Description</h4>
               <p>{{ event.description }}</p>
-              <button class="btn register my-5">Register</button>
-              <!-- <AppButton class="register my-4">Register</AppButton> -->
             </div>
             <div class="poster ml-auto">
               <img :src="getImgUrl(event.image)" :alt="event.name" class="w-100 h-100">
             </div>
           </div>
         </transition>
+        <button class="btn register" v-if="full">Register</button>
       </div>
     </div>
 </template>
@@ -74,7 +73,6 @@ export default {
   margin: 20px;
   cursor: pointer;
   transition: all 500ms ease-out;
-  /* transform: rotate(-3deg); */
 }
 .card:hover {
   transform: scale(1.02);
@@ -116,7 +114,6 @@ export default {
   color: rgba(252, 253, 253, 0.692);
   font-weight: bold;
   padding: 30px;
-  /* text-shadow: 0 0 4px yellow; */
   z-index: 2;
 }
 .title {
@@ -154,6 +151,7 @@ export default {
   transition: font-size 200ms ease-out;
 }
 
+/* Animations */
 .slide-right-enter-active, .slide-right-leave-active {
   transition: all 300ms ease-out;
 }
@@ -175,6 +173,7 @@ export default {
   opacity: 0;
 }
 
+/* Full screen card */
 .card.full {
   position: relative;
   /* top: 0;
@@ -220,12 +219,16 @@ export default {
 .info {
   color: white;
 }
+.text {
+  order: 2;
+}
 .poster {
-  max-width: 40vw;
+  width: 40vw;
   height: fit-content;
   border: 1px solid white;
   margin: 0 30px;
   margin-top: -200px;
+  order: 3;
 }
 
 .btn {
@@ -244,6 +247,9 @@ export default {
   cursor: pointer;
 }
 .register {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
   border-radius: 5px;
   padding: 15px 50px;
   background: transparent;
@@ -258,4 +264,11 @@ export default {
   border: 1px solid blue;
 }
 
+/* @media screen and (max-width: 768px) {
+  .poster {
+    margin: 20px auto;
+    width: 80vw;
+    order: 1;
+  }
+} */
 </style>
