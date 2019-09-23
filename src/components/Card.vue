@@ -2,6 +2,9 @@
     <div class="card border-0" :class="{ 'full': full }" @mouseover="hover = true" @mouseleave="hover = false" @click="goToEvent">
       <div class="card-image" :style="{ 'background-image': 'url(' + getImgUrl(event.image) + ')' }"></div>
       <div class="card-body">
+
+        <div class="close-btn mx-2" @click.stop="goBack" v-if="full">&#10006;</div>
+
         <div class="title">{{ event.name.toUpperCase() }}</div>
         <div class="footer">
           <transition name="slide-right">
@@ -12,15 +15,16 @@
           </transition>
           <p class="date">{{ event.date.split(',')[0] }}</p>
         </div>
-        <transition name="slide-left">
+        <transition name="slide-left" tag="div">
           <div class="info row m-0" v-if="full">
-            <div class="col-sm-12 col-md-8 px-0">
+            <div class="col-sm-12 col-md-6 px-0">
               <h4>Description</h4>
               <p>{{ event.description }}</p>
+              <button class="btn register my-5">Register</button>
               <!-- <AppButton class="register my-4">Register</AppButton> -->
             </div>
             <div class="poster ml-auto">
-              <img :src="getImgUrl(event.image)" :alt="event.name" class="w-100">
+              <img :src="getImgUrl(event.image)" :alt="event.name" class="w-100 h-100">
             </div>
           </div>
         </transition>
@@ -39,22 +43,19 @@ export default {
       hover: false
     }
   },
-  // created() {
-  //   if(this.event.name == this.$route.query.from) {
-  //     this.full = true;
-  //     setTimeout(() => {
-  //       this.full = false;
-  //     }, 10)
-  //   }
-  // },
+  created() {
+    if(this.event.name == this.$route.query.event) {
+      this.full = true;
+    }
+  },
   methods: {
     goToEvent() {
-      this.full = !this.full;
-      this.$emit('clicked', this.event.name);
-      // this.full = true;
-      // setTimeout(() => {
-      //   this.$router.push('/events/' + this.event.name);
-      // }, 700);
+      this.full = true;
+      this.$emit('onOpen', this.event.name);
+    },
+    goBack() {
+      this.full = false;
+      this.$emit('onClose');
     },
     getImgUrl(img) {
       return require('../assets/images/' + img);
@@ -72,7 +73,7 @@ export default {
   border-radius: 20px;
   margin: 20px;
   cursor: pointer;
-  transition: all 300ms ease-out;
+  transition: all 500ms ease-out;
   /* transform: rotate(-3deg); */
 }
 .card:hover {
@@ -86,7 +87,7 @@ export default {
   font-size: 1.6em;
 }
 .card:hover .title::after {
-  bottom: -20px;
+  bottom: -15px;
 }
 .card:hover .date {
   font-size: 1.6em;
@@ -108,24 +109,24 @@ export default {
   height: 100%;
   border-radius: 20px;
   background: rgba(0, 0, 0, 0.2);
-  transition: all 400ms ease-out;
+  transition: all 800ms ease-out;
 }
 
 .card-body {
   color: rgba(252, 253, 253, 0.692);
   font-weight: bold;
   padding: 30px;
-  text-align: center;
   /* text-shadow: 0 0 4px yellow; */
   z-index: 2;
 }
 .title {
   position: relative;
+  text-align: center;
   color: yellow;
   font-weight: 500;
   font-size: 1.5em;
   margin-top: 30px;
-  transition: all 100ms ease-out;
+  transition: all 200ms ease-out;
 }
 .title::after {
   content: '';
@@ -136,13 +137,12 @@ export default {
   width: 20%;
   height: 3px;
   background: yellow;
-  transition: all 100ms ease-out;
+  transition: all 200ms ease-out;
 }
 .footer {
   position: absolute;
   bottom: 20px;
   background: transparent;
-  text-align: left;
 }
 .extra {
   margin: 20px 0;
@@ -151,7 +151,6 @@ export default {
 .date {
   font-size: 1.2em;
   color: yellow;
-  opacity: 0;
   transition: font-size 200ms ease-out;
 }
 
@@ -163,24 +162,30 @@ export default {
   opacity: 0;
 }
 .slide-left-enter-active {
-  transition: all 300ms ease-out 400ms;
+  transition: all 400ms ease 500ms;
 }
-.slide-left-enter, .slide-left-leave-to {
-  transform: translateX(50px);
+.slide-left-leave-active {
+  transition: all 50ms;
+}
+.slide-left-enter {
+  transform: translateX(100px);
+  opacity: 0;
+}
+.slide-left-leave-to {
   opacity: 0;
 }
 
 .card.full {
   position: relative;
-  top: 0;
-  left: 0;
+  /* top: 0;
+  left: 0; */
   height: 100vh;
   width: 100vw;
   box-shadow: 0 0 0px rgba(255, 255, 255, 0.45);
   border-radius: 0;
   margin: 0;
+  cursor: auto;
   z-index: 10;
-  transform: rotate(0deg);
   transition: all 800ms ease;
 }
 .card.full:hover {
@@ -193,32 +198,64 @@ export default {
 .card.full .card-image::after {
   background: rgba(0, 0, 0, 0.95);
 }
-.card.full .card-body {
-  text-align: left;
-}
 .card.full .title {
+  text-align: left;
+  font-size: 1.6em;
   transition: all 500ms ease-out;
 }
 .card.full .title::after {
   left: 0;
   transform: translateX(0);
+  bottom: -15px;
   transition: all 500ms ease-out;
 }
 .card.full .footer {
   position: relative;
   margin-top: 60px;
-  background: transparent;
-  text-align: left;
+}
+.card.full .date {
+  font-size: 1.6em;
 }
 
 .info {
   color: white;
 }
 .poster {
-  width: 400px;
+  max-width: 40vw;
   height: fit-content;
   border: 1px solid white;
   margin: 0 30px;
   margin-top: -200px;
 }
+
+.btn {
+  color: white;
+  padding: 10px 50px;
+  transition: background-color 200ms ease-out;
+  border-radius: 50px;
+  box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.20);
+}
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 30px;
+  font-size: 1.2em;
+  color: white;
+  cursor: pointer;
+}
+.register {
+  border-radius: 5px;
+  padding: 15px 50px;
+  background: transparent;
+  border: 1px solid blue;
+  box-shadow: 0 0 15px rgba(0, 0, 255, 0.5);
+}
+.register:hover {
+  border-radius: 5px;
+  padding: 15px 50px;
+  color: white;
+  background: blue;
+  border: 1px solid blue;
+}
+
 </style>
