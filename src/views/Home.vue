@@ -1,25 +1,16 @@
 <template>
   <div class="home">
     <!-- <h1 class="title" v-if="true">Events</h1> -->
-    <transition-group name="fade" tag="div" class="row m-0 mx-auto justify-content-center">
-      <div class="event" v-for="event in events" :key="event.name">
-        <Card
-          :event="event"
-          @onOpen="onOpen"
-          @onClose="onClose"
-          v-if="(!full) || (full && selected == event.name)"
-        />
-      </div>
-    </transition-group>
+    <CardGrid :events="events" />
   </div>
 </template>
 
 <script>
-import Card from "@/components/Card";
+import CardGrid from "@/components/CardGrid";
 export default {
   name: "home",
   components: {
-    Card
+    CardGrid
   },
   data() {
     return {
@@ -96,8 +87,7 @@ export default {
   font-size: 8vw;
 }
 .events {
-  display: flex;
-  justify-content: space-evenly;
+  width: fit-content;
 }
 /* .fade-enter-active, .fade-leave-active {
   transition: opacity 800ms ease;
@@ -106,6 +96,6 @@ export default {
   opacity: 0;
 } */
 .fade-move {
-  transition: transform 0.5s;
+  transition: transform 1s;
 }
 </style>
