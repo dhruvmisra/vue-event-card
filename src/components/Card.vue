@@ -43,6 +43,14 @@ export default {
     }
   },
   created() {
+    // let scrollTop = window.pageYOffset || (document.documentElement || document.body.parentNode || document.body).scrollTop;
+    // document.addEventListener('scroll', (event) => {
+    //   // let scrollTop = window.pageYOffset;
+    //   let scrollTop = document.body.parentNode.scrollTop;
+    //   let card = document.getElementsByClassName('full')[0];
+    //   console.log(card);
+    // })
+
     if(this.event.name == this.$route.query.event) {
       this.full = true;
     }
@@ -178,7 +186,8 @@ export default {
   position: relative;
   /* top: 0;
   left: 0; */
-  height: 100vh;
+  min-height: 100vh;
+  height: fit-content;
   width: 100vw;
   box-shadow: 0 0 0px rgba(255, 255, 255, 0.45);
   border-radius: 0;
