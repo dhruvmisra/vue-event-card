@@ -187,8 +187,8 @@ export default {
   /* top: 0;
   left: 0; */
   min-height: 100vh;
-  height: fit-content;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
   box-shadow: 0 0 0px rgba(255, 255, 255, 0.45);
   border-radius: 0;
   margin: 0;

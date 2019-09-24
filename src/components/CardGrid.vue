@@ -62,7 +62,7 @@ export default {
   overflow-y: scroll;
   overflow: -moz-scrollbars-none;
   -ms-overflow-style: none;
-  transition: all 1s;
+  transition: all 1s ease;
 }
 .full-container::-webkit-scrollbar { width: 0 !important }
 .fade-move {
