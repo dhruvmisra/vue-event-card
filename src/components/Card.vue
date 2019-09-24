@@ -247,12 +247,12 @@ export default {
   cursor: pointer;
 }
 .register {
-  position: fixed;
-  bottom: 20px;
-  left: 20px;
+  position: relative;
+  /* bottom: 20px;
+  left: 20px; */
   border-radius: 5px;
   padding: 15px 50px;
-  background: transparent;
+  background: black;
   border: 1px solid blue;
   box-shadow: 0 0 15px rgba(0, 0, 255, 0.5);
 }
@@ -264,11 +264,18 @@ export default {
   border: 1px solid blue;
 }
 
-/* @media screen and (max-width: 768px) {
+@media screen and (max-width: 768px) {
+  .card {
+    width: 80vw;
+  }
   .poster {
-    margin: 20px auto;
+    margin: 0 auto;
+    margin-bottom: 30px;
     width: 80vw;
     order: 1;
   }
-} */
+  .register {
+    margin: 30px 0;
+  }
+}
 </style>

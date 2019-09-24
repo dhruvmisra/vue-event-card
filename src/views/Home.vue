@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <!-- <h1 class="title" v-if="true">Events</h1> -->
-    <transition-group name="fade" tag="div" class="row m-0 justify-content-between">
+    <transition-group name="fade" tag="div" class="row m-0 mx-auto justify-content-center">
       <div class="event" v-for="event in events" :key="event.name">
         <Card
           :event="event"
