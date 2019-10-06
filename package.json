@@ -1,9 +1,18 @@
 {
   "name": "vue-event-card",
-  "version": "0.1.1",
+  "version": "0.1.2-2",
+  "description": "An interactive and minimalistic event card to display information.",
   "private": false,
   "license": "MIT",
+  "author": "Dhruv Misra",
   "main": "./dist/vue-event-card.common.js",
+  "files": [
+    "dist/*",
+    "src/*",
+    "public/*",
+    "*.json",
+    "*.js"
+  ],
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
@@ -29,12 +38,5 @@
   "browserslist": [
     "> 1%",
     "last 2 versions"
-  ],
-  "files": [
-    "dist/*",
-    "src/*",
-    "public/*",
-    "*.json",
-    "*.js"
   ]
 }

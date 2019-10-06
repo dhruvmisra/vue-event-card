@@ -5,7 +5,7 @@
 
         <div class="close-btn mx-2" @click.stop="goBack" v-if="full">&#10006;</div>
 
-        <div class="title" v-if="full || showTitle">{{ event.name.toUpperCase() }}</div>
+        <div class="title" v-if="full || !hideTitle">{{ event.name.toUpperCase() }}</div>
         <div class="footer">
           <transition name="slide-right">
             <div class="extra" v-if="hover || full">
@@ -21,13 +21,14 @@
             <div class="text">
               <h2>Description</h2>
               <p>{{ event.description }}</p>
+              <span v-if="event.html" v-html="event.html"></span>
             </div>
             <div class="poster">
               <img :src="getImgUrl(event.innerImage)" :alt="event.name" class="w-100">
             </div>
           </div>
         </transition>
-        <button class="btn register" v-if="full" @click="onButtonClick">{{ buttonText }}</button>
+        <button class="btn register" v-if="full && !hideButton" @click="onButtonClick">{{ buttonText }}</button>
       </div>
     </div>
 </template>
@@ -39,9 +40,13 @@ export default {
     buttonText: {
       type: String
     },
-    showTitle: {
+    hideTitle: {
       type: Boolean,
-      default: true
+      default: false
+    },
+    hideButton: {
+      type: Boolean,
+      default: false
     }
   },
   data() {

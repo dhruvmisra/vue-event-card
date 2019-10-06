@@ -1,8 +1,8 @@
 <template>
   <div class="home">
     <h1 class="title">Vue Event Card</h1>
+    <CardGrid :events="events" :buttonText="'Register'" :showTitle="true" />
     <div class="grid-container">
-      <CardGrid :events="events" :buttonText="'Register'" :showTitle="true" />
     </div>
   </div>
 </template>
@@ -25,6 +25,7 @@ export default {
           date: "October 11, 2019",
           description:
             "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem veritatis ea sint voluptatum vel rerum ipsum illo architecto repellat debitis corporis ex, ut explicabo! Voluptatum commodi dignissimos nihil cumque mollitia?",
+          html: "<br><p>This paragraph is created using <br> custom <br> HTML</p>",
           outerImage: "assets/images/coding.jpg",
           innerImage: "assets/images/coding.jpg",
           details: {
