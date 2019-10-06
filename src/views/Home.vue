@@ -1,9 +1,7 @@
 <template>
   <div class="home">
     <h1 class="title">Vue Event Card</h1>
-    <CardGrid :events="events" :buttonText="'Register'" :showTitle="true" />
-    <div class="grid-container">
-    </div>
+    <CardGrid :events="events" :buttonText="'Register'" @buttonClicked="eventHandler" />
   </div>
 </template>
 
@@ -17,20 +15,19 @@ export default {
   },
   data() {
     return {
-      selected: "",
-      full: false,
       events: [
         {
           name: "Competitive Code",
           date: "October 11, 2019",
           description:
             "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem veritatis ea sint voluptatum vel rerum ipsum illo architecto repellat debitis corporis ex, ut explicabo! Voluptatum commodi dignissimos nihil cumque mollitia?",
-          html: "<br><p>This paragraph is created using <br> custom <br> HTML</p>",
+          html:
+            "<br><p>This paragraph is created using <br> custom <br> HTML</p>",
           outerImage: "assets/images/coding.jpg",
           innerImage: "assets/images/coding.jpg",
           details: {
-            'Team Size': '2',
-            'Time': '10AM - 1PM'
+            "Team Size": "2",
+            Time: "10AM - 1PM"
           }
         },
         {
@@ -41,8 +38,8 @@ export default {
           outerImage: "assets/images/hackathon.jpg",
           innerImage: "assets/images/hackathon.jpg",
           details: {
-            'Team Size': '2',
-            'Time': '12PM - 8PM'
+            "Team Size": "2",
+            Time: "12PM - 8PM"
           }
         },
         {
@@ -53,8 +50,8 @@ export default {
           outerImage: "assets/images/treasure.jpg",
           innerImage: "assets/images/treasure.jpg",
           details: {
-            'Team Size': '2',
-            'Time': '4PM - 6PM'
+            "Team Size": "2",
+            Time: "4PM - 6PM"
           }
         },
         {
@@ -65,26 +62,16 @@ export default {
           outerImage: "assets/images/marvel.jpg",
           innerImage: "assets/images/marvel.jpg",
           details: {
-            'Team Size': '2',
-            'Time': '3PM - 5PM'
+            "Team Size": "2",
+            Time: "3PM - 5PM"
           }
         }
       ]
     };
   },
   methods: {
-    onOpen(value) {
-      if (!this.full) {
-        this.full = true;
-        this.selected = value;
-        this.$router.push({ path: "/", query: { event: value } });
-      }
-    },
-    onClose() {
-      setTimeout(() => {
-        this.full = false;
-      }, 400);
-      this.$router.push({ path: "/", query: {} });
+    eventHandler() {
+      console.log('button clicked');
     }
   },
   created() {
@@ -103,11 +90,6 @@ export default {
   font-size: 5vw;
   font-weight: 700;
   padding: 30px 0;
-}
-.grid-container {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
 }
 
 @media only screen and (max-width: 768px) {

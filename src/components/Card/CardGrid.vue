@@ -4,9 +4,11 @@
       <Card
         :event="event"
         :buttonText="buttonText"
-        :showTitle="showTitle"
+        :hideTitle="hideTitle"
+        :hideButton="hideButton"
         @onOpen="onOpen"
         @onClose="onClose"
+        @buttonClicked="$emit('buttonClicked')"
         v-if="(!full) || (full && selected == event.name)"
       />
     </div>
@@ -26,9 +28,13 @@ export default {
       type: String,
       default: 'Register'
     },
-    showTitle: {
+    hideTitle: {
       type: Boolean,
-      default: true
+      default: false
+    },
+    hideButton: {
+      type: Boolean,
+      default: false
     }
   },
   data() {

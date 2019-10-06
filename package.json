@@ -1,6 +1,6 @@
 {
   "name": "vue-event-card",
-  "version": "0.1.2-2",
+  "version": "0.1.3",
   "description": "An interactive and minimalistic event card to display information.",
   "private": false,
   "license": "MIT",

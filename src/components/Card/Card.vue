@@ -76,7 +76,6 @@ export default {
       return require('@/' + img);
     },
     onButtonClick() {
-      console.log('button clicked');
       this.$emit('buttonClicked');
     }
   }
