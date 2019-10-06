@@ -1,11 +1,11 @@
 <template>
-    <div class="card border-0" :class="{ 'full': full }" @mouseover="hover = true" @mouseleave="hover = false" @click="goToEvent">
+    <div class="card" :class="{ 'full': full }" @mouseover="hover = true" @mouseleave="hover = false" @click="goToEvent">
       <div class="card-image" :style="{ 'background-image': 'url(' + getImgUrl(event.outerImage) + ')' }"></div>
       <div class="card-body">
 
         <div class="close-btn mx-2" @click.stop="goBack" v-if="full">&#10006;</div>
 
-        <div class="title">{{ event.name.toUpperCase() }}</div>
+        <div class="title" v-if="full || showTitle">{{ event.name.toUpperCase() }}</div>
         <div class="footer">
           <transition name="slide-right">
             <div class="extra" v-if="hover || full">
@@ -15,13 +15,13 @@
           <p class="date">{{ event.date.split(',')[0] }}</p>
         </div>
         <transition name="slide-left" tag="div">
-          <div class="info row m-0" v-if="full">
-            <div class="text col-sm-12 col-md-6 px-0">
-              <h4>Description</h4>
+          <div class="info" v-if="full">
+            <div class="text">
+              <h2>Description</h2>
               <p>{{ event.description }}</p>
             </div>
-            <div class="poster ml-auto">
-              <img :src="getImgUrl(event.innerImage)" :alt="event.name" class="w-100 h-100">
+            <div class="poster">
+              <img :src="getImgUrl(event.innerImage)" :alt="event.name" class="w-100">
             </div>
           </div>
         </transition>
@@ -36,6 +36,10 @@ export default {
     event: Object,
     buttonText: {
       type: String
+    },
+    showTitle: {
+      type: Boolean,
+      default: true
     }
   },
   data() {
@@ -78,6 +82,7 @@ export default {
   height: 400px;  
   width: 300px;
   box-shadow: 0 5px 20px rgba(120, 120, 120, 0.4);
+  border: none;
   border-radius: 20px;
   margin: 20px;
   cursor: pointer;
@@ -91,7 +96,7 @@ export default {
   background: rgba(0, 0, 0, 0.6);
 }
 .card:hover .title {
-  font-size: 1.6em;
+  font-size: 1.5em;
 }
 .card:hover .title::after {
   bottom: -15px;
@@ -108,6 +113,7 @@ export default {
   border-radius: 20px;
   background-position: center;
   background-size: cover;
+  z-index: -1;
 }
 .card-image::after {
   content: '';
@@ -129,8 +135,8 @@ export default {
   position: relative;
   text-align: center;
   color: yellow;
-  font-weight: 500;
-  font-size: 1.5em;
+  font-weight: 700;
+  font-size: 1.4em;
   margin-top: 30px;
   transition: all 200ms ease-out;
 }
@@ -209,7 +215,7 @@ export default {
 }
 .card.full .title {
   text-align: left;
-  font-size: 1.6em;
+  font-size: 1.5em;
   transition: all 500ms ease-out;
 }
 .card.full .title::after {
@@ -227,48 +233,55 @@ export default {
 }
 
 .info {
+  display: flex;
   color: white;
 }
 .text {
   order: 2;
+  width: 50vw;
 }
 .poster {
   width: 40vw;
   height: fit-content;
   border: 1px solid white;
-  margin: 0 30px;
-  margin-top: -200px;
+  margin-top: -20vh;
+  margin-left: auto;
+  margin-right: 30px;
   order: 3;
+}
+
+.poster img {
+  width: 100%; 
 }
 
 .btn {
   color: white;
+  font-weight: bold;
   padding: 10px 50px;
   transition: background-color 200ms ease-out;
   border-radius: 50px;
   box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.20);
+  cursor: pointer;
 }
 .close-btn {
   position: absolute;
   top: 10px;
   right: 30px;
-  font-size: 1.2em;
+  margin: 10px;
+  font-size: 1.4em;
   color: white;
   cursor: pointer;
 }
 .register {
   position: relative;
-  /* bottom: 20px;
-  left: 20px; */
+  margin: 20px 0;
   border-radius: 5px;
-  padding: 15px 50px;
+  padding: 20px 50px;
   background: black;
   border: 1px solid blue;
   box-shadow: 0 0 15px rgba(0, 0, 255, 0.5);
 }
 .register:hover {
-  border-radius: 5px;
-  padding: 15px 50px;
   color: white;
   background: blue;
   border: 1px solid blue;
@@ -278,11 +291,17 @@ export default {
   .card {
     width: 80vw;
   }
+  .info {
+    flex-direction: column;
+  }
   .poster {
     margin: 0 auto;
     margin-bottom: 30px;
     width: 80vw;
     order: 1;
+  }
+  .text {
+    width: 80vw;
   }
   .register {
     margin: 30px 0;

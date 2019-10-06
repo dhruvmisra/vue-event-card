@@ -1,9 +1,10 @@
 <template>
-  <transition-group name="fade" mode="out-in" tag="div" class="row m-0 justify-content-center">
-    <div class="event" :class="{ 'full-container': (full && selected == event.name) }" v-for="event in events" :key="event.name">
+  <transition-group name="fade" mode="out-in" tag="div" class="main-container">
+    <div class="event-container" :class="{ 'full-container': (full && selected == event.name) }" v-for="event in events" :key="event.name">
       <Card
         :event="event"
         :buttonText="buttonText"
+        :showTitle="showTitle"
         @onOpen="onOpen"
         @onClose="onClose"
         v-if="(!full) || (full && selected == event.name)"
@@ -24,6 +25,10 @@ export default {
     buttonText: {
       type: String,
       default: 'Register'
+    },
+    showTitle: {
+      type: Boolean,
+      default: true
     }
   },
   data() {
@@ -57,6 +62,11 @@ export default {
 </script>
 
 <style scoped>
+.main-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
 .full-container {
   position: fixed;
   top: 0;

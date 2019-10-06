@@ -1,14 +1,15 @@
 <template>
   <div class="home">
-    <h1 class="title">Events</h1>
-    <div class="row mx-auto justify-content-center">
-      <CardGrid :events="events" :buttonText="'Register'" />
+    <h1 class="title">Vue Event Card</h1>
+    <div class="grid-container">
+      <CardGrid :events="events" :buttonText="'Register'" :showTitle="true" />
     </div>
   </div>
 </template>
 
 <script>
-import CardGrid from "@/components/CardGrid";
+import CardGrid from "@/components/Card/CardGrid";
+
 export default {
   name: "home",
   components: {
@@ -98,14 +99,19 @@ export default {
 .title {
   color: white;
   text-align: center;
-  font-size: 8vw;
+  font-size: 5vw;
   font-weight: 700;
-  margin: 20px 0;
+  padding: 30px 0;
+}
+.grid-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 @media only screen and (max-width: 768px) {
   .title {
-    font-size: 15vw;
+    font-size: 10vw;
   }
 }
 </style>
