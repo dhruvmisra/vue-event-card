@@ -39,7 +39,6 @@ _This package in also dependent on the vue-router_
 `npm i --save vue-router` or `vue add router`
 
 ## Global Usage
-
 Register the component globally using the Vue.use() method.
 
 ```js
@@ -61,11 +60,28 @@ new Vue({
 }).$mount('#app')
 ```
 
+## Local Usage
+Import the component and register it locally in the `components` option
+
+```html
+<script>
+  import CardGrid from 'vue-event-card'
+
+  export default {
+    components: {
+      CardGrid
+    }
+  }
+</script>
+```
+
 Once registered, you can use the component by passing an array of events:
 
 ```html
 <CardGrid :events="events" buttonText="Know More" hideTitle />
 ```
+
+<br>
 
 ## Props
 | Prop         	| Type             	| Default    	| Description                                                             	|
@@ -75,10 +91,14 @@ Once registered, you can use the component by passing an array of events:
 | `hideTitle`  	| Boolean          	| false      	| Hide the title on collapsed card <br> (Will show in the expanded state) 	|
 | `hideButton` 	| Boolean          	| false      	| Hide button in the expanded state                                       	|
 
+<br>
+
 ## Emits
 | Emitted Action  	| Description                                                            	|
 |-----------------	|------------------------------------------------------------------------	|
 | `buttonClicked` 	| Fired when the user clicks the button. Used to handle the click event. 	|
+
+<br>
 
 ## Events Array
 The events array should be an array of objects. Individual objects should contain the following fields:
@@ -91,18 +111,17 @@ events: [
     description: "Blah blah blah blah",
     html: '<p>This is some valid <br> HTML</p>',
     outerImage: "assets/images/event.jpg",
-    innerImage: "https://...",
+    innerImage: "https://i.imgflip.com/3cjfgr.jpg",
     details: {
       'Team Size': '2',
       'Time': '10AM - 1PM'
     }
   },
-  .
-  .
-  .
+  ...
 ]
 ```
-### Event Object
+
+## Event Object
 | Name          	| Type                	| Description                                                                                                       	|
 |---------------	|---------------------	|-------------------------------------------------------------------------------------------------------------------	|
 | `name`        	| String (Required)   	| Name of the event (_`Should be unique`_)                                                                          	|
