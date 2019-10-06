@@ -25,7 +25,7 @@ The Vue Event Card is a minimalistic design to showcase your events in a clean a
 Created on Vue.js by [Dhruv Misra](https://github.com/dhruvmisra)
 
 # Live Demo
-A live demo can be found [here](https://silent-lad.github.io/Vue2BaremetricsCalendar/#/).
+A live demo can be found [here](https://dhruvmisra.github.io/vue-event-card/).
 
 <!-- <p align="center">
   <img src="https://media.giphy.com/media/VFvkCMvXvlTNAGuaZm/giphy.gif">
@@ -71,8 +71,9 @@ Once registered, you can use the component by passing an array of events:
       name: "Event name",
       date: "October 11, 2019",
       description: "Blah blah blah blah",
-      outerImage: "assets/images/coding.jpg",
-      innerImage: "assets/images/coding.jpg",
+      html: '<p>This is some valid <br> HTML</p>',
+      outerImage: "assets/images/event.jpg",
+      innerImage: "https://...",
       details: {
         'Team Size': '2',
         'Time': '10AM - 1PM'
@@ -83,9 +84,9 @@ Once registered, you can use the component by passing an array of events:
     .
   ]
  ```
-  ### Event Object
-  - **name**
-        String, Name of the event
+### Event Object
+- **name**
+      String, Name of the event
 
   
 
