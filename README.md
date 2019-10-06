@@ -113,9 +113,10 @@ events: [
 | `innerImage`  	| String (Image path) 	| The image appearing inside the card in expanded state.                                                            	|
 | `details`     	| Object              	| Key-value pairs to show essential details on hovering the card.                                                   	|               
 
-## Things to keep in mind
 
-### Image paths
+# Things to keep in mind
+
+## Image paths
 _Image paths can be defined for images in the project relative to `src` folder_
 
 ```js
@@ -130,7 +131,7 @@ _Image paths can also be a URL_
 outerImage: 'https://i.imgflip.com/3cjfgr.jpg'  //should start with https:// or http://
 ```
 
-### Details Object
+## Details Object
 _This object should contain key-value pairs for the information to be shown on hover_
 ```js
 details: {
@@ -145,7 +146,7 @@ This will have this affect:
 
 ![Hover effect](https://media.giphy.com/media/MZXDWBbmbtp3HaARWG/giphy.gif)
 
-### Date Field
+## Date Field
 Preferred format for the date string:
 
 `[Month] [Date], [Year]`
@@ -154,12 +155,8 @@ The comma (,) is important as the component takes the first part of the string b
 
 <br>
 
-<center>
+-> **This is my first NPM package for Vue.js, would love to hear your suggestions** <-
 
-**This is my first NPM package for Vue.js, would love to hear your suggestions**
+-> Feel free to point out bugs or request features <-
 
-Feel free to point out bugs or request features
-
-Nothing but :heart: for the community
-
-</center>
+-> Nothing but :heart: for the community <-
