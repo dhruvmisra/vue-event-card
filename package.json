@@ -1,6 +1,6 @@
 {
   "name": "vue-event-card",
-  "version": "0.1.4",
+  "version": "0.1.4-1",
   "description": "A Vue.js interactive card design component to show essentials and description for an event.",
   "private": false,
   "license": "MIT",
@@ -38,5 +38,19 @@
   "browserslist": [
     "> 1%",
     "last 2 versions"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dhruvmisra/vue-event-card.git"
+  },
+  "keywords": [
+    "vue",
+    "vue event",
+    "vue card",
+    "vue event card",
+    "card",
+    "event",
+    "card design",
+    "interactive design"
   ]
 }
