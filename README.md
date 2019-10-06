@@ -114,6 +114,7 @@ events: [
 | `details`     	| Object              	| Key-value pairs to show essential details on hovering the card.                                                   	|               
 
 <br>
+
 # Things to keep in mind
 
 ## Image paths
