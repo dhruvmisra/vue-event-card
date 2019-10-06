@@ -30,7 +30,7 @@ A live demo can be found [here](https://dhruvmisra.github.io/vue-event-card/).
 </p>
 
 # Installation
-`npm i --save vue2-baremetrics-calendar`
+`npm i --save vue-event-card`
 
 _This package in also dependent on the vue-router_
 
