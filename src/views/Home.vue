@@ -1,7 +1,9 @@
 <template>
   <div class="home">
-    <!-- <h1 class="title" v-if="true">Events</h1> -->
-    <CardGrid :events="events" />
+    <h1 class="title">Events</h1>
+    <div class="row mx-auto justify-content-center">
+      <CardGrid :events="events" :buttonText="'Register'" />
+    </div>
   </div>
 </template>
 
@@ -22,36 +24,48 @@ export default {
           date: "October 11, 2019",
           description:
             "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem veritatis ea sint voluptatum vel rerum ipsum illo architecto repellat debitis corporis ex, ut explicabo! Voluptatum commodi dignissimos nihil cumque mollitia?",
-          image: "coding.jpg",
-          teamSize: '2',
-          time: '10AM - 1PM'
+          outerImage: "assets/images/coding.jpg",
+          innerImage: "assets/images/coding.jpg",
+          details: {
+            'Team Size': '2',
+            'Time': '10AM - 1PM'
+          }
         },
         {
           name: "Hackathon",
           date: "October 11, 2019",
           description:
             "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem veritatis ea sint voluptatum vel rerum ipsum illo architecto repellat debitis corporis ex, ut explicabo! Voluptatum commodi dignissimos nihil cumque mollitia?",
-          image: "hackathon.jpg",
-          teamSize: '2',
-          time: '12PM - 8PM'
+          outerImage: "assets/images/hackathon.jpg",
+          innerImage: "assets/images/hackathon.jpg",
+          details: {
+            'Team Size': '2',
+            'Time': '12PM - 8PM'
+          }
         },
         {
           name: "Treasure Hunt",
           date: "October 12, 2019",
           description:
             "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem veritatis ea sint voluptatum vel rerum ipsum illo architecto repellat debitis corporis ex, ut explicabo! Voluptatum commodi dignissimos nihil cumque mollitia?",
-          image: "treasure.jpg",
-          teamSize: '2',
-          time: '4PM - 6PM'
+          outerImage: "assets/images/treasure.jpg",
+          innerImage: "assets/images/treasure.jpg",
+          details: {
+            'Team Size': '2',
+            'Time': '4PM - 6PM'
+          }
         },
         {
           name: "Marvel Quiz",
           date: "October 13, 2019",
           description:
             "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem veritatis ea sint voluptatum vel rerum ipsum illo architecto repellat debitis corporis ex, ut explicabo! Voluptatum commodi dignissimos nihil cumque mollitia?",
-          image: "marvel.jpg",
-          teamSize: '2',
-          time: '3PM - 5PM'
+          outerImage: "assets/images/marvel.jpg",
+          innerImage: "assets/images/marvel.jpg",
+          details: {
+            'Team Size': '2',
+            'Time': '3PM - 5PM'
+          }
         }
       ]
     };
@@ -85,17 +99,13 @@ export default {
   color: white;
   text-align: center;
   font-size: 8vw;
+  font-weight: 700;
+  margin: 20px 0;
 }
-.events {
-  width: fit-content;
-}
-/* .fade-enter-active, .fade-leave-active {
-  transition: opacity 800ms ease;
-}
-.fade-enter, .fade-leave-to {
-  opacity: 0;
-} */
-.fade-move {
-  transition: transform 1s;
+
+@media only screen and (max-width: 768px) {
+  .title {
+    font-size: 15vw;
+  }
 }
 </style>

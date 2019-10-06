@@ -1,6 +1,6 @@
 <template>
     <div class="card border-0" :class="{ 'full': full }" @mouseover="hover = true" @mouseleave="hover = false" @click="goToEvent">
-      <div class="card-image" :style="{ 'background-image': 'url(' + getImgUrl(event.image) + ')' }"></div>
+      <div class="card-image" :style="{ 'background-image': 'url(' + getImgUrl(event.outerImage) + ')' }"></div>
       <div class="card-body">
 
         <div class="close-btn mx-2" @click.stop="goBack" v-if="full">&#10006;</div>
@@ -9,8 +9,7 @@
         <div class="footer">
           <transition name="slide-right">
             <div class="extra" v-if="hover || full">
-              <p class="m-0">Team-size: {{ event.teamSize }}</p>
-              <p class="m-0">Time: {{ event.time }}</p>
+              <p class="m-0" v-for="(detail, key) in event.details" :key="key">{{ key }}: {{ detail }}</p>
             </div>
           </transition>
           <p class="date">{{ event.date.split(',')[0] }}</p>
@@ -22,11 +21,11 @@
               <p>{{ event.description }}</p>
             </div>
             <div class="poster ml-auto">
-              <img :src="getImgUrl(event.image)" :alt="event.name" class="w-100 h-100">
+              <img :src="getImgUrl(event.innerImage)" :alt="event.name" class="w-100 h-100">
             </div>
           </div>
         </transition>
-        <button class="btn register" v-if="full">Register</button>
+        <button class="btn register" v-if="full" @click="onButtonClick">{{ buttonText }}</button>
       </div>
     </div>
 </template>
@@ -35,6 +34,9 @@
 export default {
   props: {
     event: Object,
+    buttonText: {
+      type: String
+    }
   },
   data() {
     return {
@@ -43,14 +45,6 @@ export default {
     }
   },
   created() {
-    // let scrollTop = window.pageYOffset || (document.documentElement || document.body.parentNode || document.body).scrollTop;
-    // document.addEventListener('scroll', (event) => {
-    //   // let scrollTop = window.pageYOffset;
-    //   let scrollTop = document.body.parentNode.scrollTop;
-    //   let card = document.getElementsByClassName('full')[0];
-    //   console.log(card);
-    // })
-
     if(this.event.name == this.$route.query.event) {
       this.full = true;
     }
@@ -65,7 +59,14 @@ export default {
       this.$emit('onClose');
     },
     getImgUrl(img) {
-      return require('../assets/images/' + img);
+      if(img.startsWith('https://') || img.startsWith('http://')) {
+        return img;
+      }
+      return require('@/' + img);
+    },
+    onButtonClick() {
+      console.log('button clicked');
+      this.$emit('buttonClicked');
     }
   }
 }
@@ -76,7 +77,7 @@ export default {
   position: relative;
   height: 400px;  
   width: 300px;
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.45);
+  box-shadow: 0 5px 20px rgba(120, 120, 120, 0.4);
   border-radius: 20px;
   margin: 20px;
   cursor: pointer;
@@ -84,7 +85,7 @@ export default {
 }
 .card:hover {
   transform: scale(1.02);
-  box-shadow: 0 0 40px rgba(255, 255, 255, 0.45);
+  box-shadow: 0 10px 50px rgba(120, 120, 120, 0.4);
 }
 .card:hover .card-image::after {
   background: rgba(0, 0, 0, 0.6);
@@ -187,9 +188,9 @@ export default {
   /* top: 0;
   left: 0; */
   min-height: 100vh;
-  height: 100%;
+  height: fit-content;
   width: 100%;
-  box-shadow: 0 0 0px rgba(255, 255, 255, 0.45);
+  box-shadow: 0 0 0 white;
   border-radius: 0;
   margin: 0;
   cursor: auto;
@@ -204,7 +205,7 @@ export default {
   border-radius: 0;
 }
 .card.full .card-image::after {
-  background: rgba(0, 0, 0, 0.95);
+  background: rgba(0, 0, 0, 0.90);
 }
 .card.full .title {
   text-align: left;

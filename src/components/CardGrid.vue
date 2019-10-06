@@ -1,8 +1,9 @@
 <template>
-  <transition-group name="fade" mode="out-in" tag="div" class="row m-0 mx-auto">
+  <transition-group name="fade" mode="out-in" tag="div" class="row m-0 justify-content-center">
     <div class="event" :class="{ 'full-container': (full && selected == event.name) }" v-for="event in events" :key="event.name">
       <Card
         :event="event"
+        :buttonText="buttonText"
         @onOpen="onOpen"
         @onClose="onClose"
         v-if="(!full) || (full && selected == event.name)"
@@ -19,7 +20,11 @@ export default {
     Card
   },
   props: {
-    events: Array
+    events: Array,
+    buttonText: {
+      type: String,
+      default: 'Register'
+    }
   },
   data() {
     return {
@@ -65,7 +70,8 @@ export default {
   transition: all 1s ease;
 }
 .full-container::-webkit-scrollbar { width: 0 !important }
+
 .fade-move {
-  transition: transform 1s;
+  transition: transform 800ms ease;
 }
 </style>
