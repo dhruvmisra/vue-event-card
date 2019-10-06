@@ -12,7 +12,9 @@
               <p class="m-0" v-for="(detail, key) in event.details" :key="key">{{ key }}: {{ detail }}</p>
             </div>
           </transition>
-          <p class="date">{{ event.date.split(',')[0] }}</p>
+          <p class="date">
+            {{ event.date.split(',')[0] }}
+          </p>
         </div>
         <transition name="slide-left" tag="div">
           <div class="info" v-if="full">
