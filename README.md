@@ -27,11 +27,16 @@ Created on Vue.js by [Dhruv Misra](https://github.com/dhruvmisra)
 # Live Demo
 A live demo can be found [here](https://dhruvmisra.github.io/vue-event-card/).
 
-<!-- <p align="center">
-  <img src="https://media.giphy.com/media/VFvkCMvXvlTNAGuaZm/giphy.gif">
-</p> -->
+<p align="center">
+  <img src="https://media.giphy.com/media/jO18cveEuJIJLBFyxK/giphy.gif">
+</p>
 
-# Usage
+# Installation
+`npm i --save vue2-baremetrics-calendar`
+
+_This package in also dependent on the vue-router_
+
+`npm i --save vue-router` or `vue add router`
 
 ## Global Usage
 
@@ -43,10 +48,10 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
 //Import the plugin
-import Cards from 'vue-event-card'
+import CardGrid from 'vue-event-card'
 
 //Use the plugin
-Vue.use(Cards);
+Vue.use(CardGrid);
 
 Vue.config.productionTip = false
 
@@ -59,34 +64,99 @@ new Vue({
 Once registered, you can use the component by passing an array of events:
 
 ```html
-<Cards :events="events />
+<CardGrid :events="events />
 ```
 
+## Props
+| Prop         	| Type             	| Default    	| Description                                                             	|
+|--------------	|------------------	|------------	|-------------------------------------------------------------------------	|
+| `events`     	| Array (Required) 	| -          	| The array of event objects                                              	|
+| `buttonText` 	| String           	| "Register" 	| The text which appears inside the button                                	|
+| `hideTitle`  	| Boolean          	| false      	| Hide the title on collapsed card <br> (Will show in the expanded state) 	|
+| `hideButton` 	| Boolean          	| false      	| Hide button in the expanded state                                       	|
+
+## Emits
+| Emitted Action  	| Description                                                            	|
+|-----------------	|------------------------------------------------------------------------	|
+| `buttonClicked` 	| Fired when the user clicks the button. Used to handle the click event. 	|
+
 ## Events Array
- The events array should be an array of objects. Individual objects should contain the following fields:
+The events array should be an array of objects. Individual objects should contain the following fields:
 
- ```js
-  events: [
-    {
-      name: "Event name",
-      date: "October 11, 2019",
-      description: "Blah blah blah blah",
-      html: '<p>This is some valid <br> HTML</p>',
-      outerImage: "assets/images/event.jpg",
-      innerImage: "https://...",
-      details: {
-        'Team Size': '2',
-        'Time': '10AM - 1PM'
-      }
-    },
-    .
-    .
-    .
-  ]
- ```
+```js
+events: [
+  {
+    name: "Event name",
+    date: "October 11, 2019",
+    description: "Blah blah blah blah",
+    html: '<p>This is some valid <br> HTML</p>',
+    outerImage: "assets/images/event.jpg",
+    innerImage: "https://...",
+    details: {
+      'Team Size': '2',
+      'Time': '10AM - 1PM'
+    }
+  },
+  .
+  .
+  .
+]
+```
 ### Event Object
-- **name**
-      String, Name of the event
+| Name          	| Type                	| Description                                                                                                       	|
+|---------------	|---------------------	|-------------------------------------------------------------------------------------------------------------------	|
+| `name`        	| String (Required)   	| Name of the event (_`Should be unique`_)                                                                          	|
+| `date`        	| String              	| Date of the event                                                                                                 	|
+| `description` 	| String              	| ...Oh what do I describe about this?                                                                              	|
+| `html`        	| String              	| Valid HTML code to render inside the card.                                                                        	|
+| `outerImage`  	| String (Image path) 	| The image appearing in the card in it's collapsed state. <br> Also the image in the background in expanded state. 	|
+| `innerImage`  	| String (Image path) 	| The image appearing inside the card in expanded state.                                                            	|
+| `details`     	| Object              	| Key-value pairs to show essential details on hovering the card.                                                   	|               
 
-  
+#### Image paths
+_Image paths can be defined for images in the project relative to `src` folder_
 
+```js
+outerImage: 'assets/images/marvel.jpg'  //converts to: /src/assets/images/marvel.jpg
+```
+**How these paths works?**
+
+The given image path is prefixed with `'@/'` and then the image is imported using require() to get the webpack relative path.
+
+_Image paths can also be a URL_
+```js
+outerImage: 'https://i.imgflip.com/3cjfgr.jpg'  //should start with https:// or http://
+```
+
+#### Details Object
+_This object should contain key-value pairs for the information to be shown on hover_
+```js
+details: {
+  'Field A': 'Value A',
+  'Field B': 'Value B',
+  'Field C': 'Value C',
+  ...
+}
+```
+
+This will have this affect:
+
+![Hover effect](https://media.giphy.com/media/MZXDWBbmbtp3HaARWG/giphy.gif)
+
+#### Date Field
+Preferred format for the date string:
+
+`[Month] [Date], [Year]`
+
+The comma (,) is important as the component takes the first part of the string before comma to display. I am planning to switch to UNIX timestamps or maybe another slight animation for the year.
+
+<br>
+
+<p align="center">
+
+**This is my first NPM package for Vue.js, would love to hear your suggestions**
+
+Help me find bugs. 
+Nothing but :heart: for the community.
+
+</p>

@@ -73,12 +73,6 @@ export default {
     eventHandler() {
       console.log('button clicked');
     }
-  },
-  created() {
-    if (this.$route.query.event) {
-      this.full = true;
-      this.selected = this.$route.query.event;
-    }
   }
 };
 </script>
