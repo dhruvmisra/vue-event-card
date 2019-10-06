@@ -27,9 +27,9 @@ Created on Vue.js by [Dhruv Misra](https://github.com/dhruvmisra)
 # Live Demo
 A live demo can be found [here](https://silent-lad.github.io/Vue2BaremetricsCalendar/#/).
 
-<p align="center">
+<!-- <p align="center">
   <img src="https://media.giphy.com/media/VFvkCMvXvlTNAGuaZm/giphy.gif">
-</p>
+</p> -->
 
 # Usage
 
