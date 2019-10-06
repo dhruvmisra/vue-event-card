@@ -113,11 +113,11 @@ events: [
 | `innerImage`  	| String (Image path) 	| The image appearing inside the card in expanded state.                                                            	|
 | `details`     	| Object              	| Key-value pairs to show essential details on hovering the card.                                                   	|               
 
-
+<br>
 # Things to keep in mind
 
 ## Image paths
-_Image paths can be defined for images in the project relative to `src` folder_
+Image paths can be defined for images in the project relative to `src` folder
 
 ```js
 outerImage: 'assets/images/marvel.jpg'  //converts to: /src/assets/images/marvel.jpg
@@ -126,13 +126,13 @@ outerImage: 'assets/images/marvel.jpg'  //converts to: /src/assets/images/marvel
 
 > The given image path is prefixed with `@/` and then the image is imported using require() to get the webpack relative path.
 
-_Image paths can also be a URL_
+Image paths can also be a URL
 ```js
 outerImage: 'https://i.imgflip.com/3cjfgr.jpg'  //should start with https:// or http://
 ```
 
 ## Details Object
-_This object should contain key-value pairs for the information to be shown on hover_
+This object should contain key-value pairs for the information to be shown on hover
 ```js
 details: {
   'Field A': 'Value A',
@@ -155,8 +155,14 @@ The comma (,) is important as the component takes the first part of the string b
 
 <br>
 
--> **This is my first NPM package for Vue.js, would love to hear your suggestions** <-
+<p align="center"> 
+  <b>This is my first NPM package for Vue.js, would love to hear your suggestions</b>
+</p>
 
--> Feel free to point out bugs or request features <-
+<p align="center"> 
+  Feel free to point out bugs or request features
+</p>
 
--> Nothing but :heart: for the community <-
+<p align="center"> 
+  Nothing but :heart: for the community
+</p>
