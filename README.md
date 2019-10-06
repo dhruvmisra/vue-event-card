@@ -7,8 +7,6 @@
 
   <img src="https://badges.frapsoft.com/os/v1/open-source.svg?v=103" >
 
-  <!-- <img src="https://img.shields.io/github/stars/silent-lad/vue-event-card.svg?style=flat"> -->
-
   <img src="https://img.shields.io/github/languages/top/dhruvmisra/vue-event-card.svg">
 
   <img src="https://img.shields.io/github/issues/dhruvmisra/vue-event-card.svg">
@@ -20,9 +18,9 @@ _A Vue.js interactive card design component to show essentials and description f
 
 ---
 
-The Vue Event Card is a minimalistic design to showcase your events in a clean and interactive way, and handling user actions.
-
-Created on Vue.js by [Dhruv Misra](https://github.com/dhruvmisra)
+The Vue Event Card is a fluid and modern design to showcase your events in a clean and interactive way, and handling user actions.
+Completely responsive and easy to use, making sure both desgin and setup are minimal.
+Created for Vue.js by [Dhruv Misra](https://github.com/dhruvmisra)
 
 # Live Demo
 A live demo can be found [here](https://dhruvmisra.github.io/vue-event-card/).
@@ -126,7 +124,7 @@ events: [
 |---------------	|---------------------	|-------------------------------------------------------------------------------------------------------------------	|
 | `name`        	| String (Required)   	| Name of the event (_`Should be unique`_)                                                                          	|
 | `date`        	| String              	| Date of the event                                                                                                 	|
-| `description` 	| String              	| ...Oh what do I describe about this?                                                                              	|
+| `description` 	| String              	| ...you know.                                                                              	|
 | `html`        	| String              	| Valid HTML code to render inside the card.                                                                        	|
 | `outerImage`  	| String (Image path) 	| The image appearing in the card in it's collapsed state. <br> Also the image in the background in expanded state. 	|
 | `innerImage`  	| String (Image path) 	| The image appearing inside the card in expanded state.                                                            	|
