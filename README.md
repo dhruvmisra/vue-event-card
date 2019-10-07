@@ -6,6 +6,8 @@
   <img src="https://img.shields.io/npm/v/vue-event-card">
 
   <img src="https://badges.frapsoft.com/os/v1/open-source.svg?v=103" >
+  
+  <img src="https://img.shields.io/github/stars/silent-lad/Vue2BaremetricsCalendar.svg?style=flat">
 
   <img src="https://img.shields.io/github/languages/top/dhruvmisra/vue-event-card.svg">
 
@@ -20,6 +22,7 @@ _A Vue.js interactive card design component to show essentials and description f
 
 The Vue Event Card is a fluid and modern design to showcase your events in a clean and interactive way, and handling user actions.
 Completely responsive and easy to use, making sure both desgin and setup are minimal.
+
 Created for Vue.js by [Dhruv Misra](https://github.com/dhruvmisra)
 
 # Live Demo
