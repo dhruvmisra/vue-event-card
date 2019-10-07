@@ -7,7 +7,7 @@
 
   <img src="https://badges.frapsoft.com/os/v1/open-source.svg?v=103" >
   
-  <img src="https://img.shields.io/github/stars/dhruvmisra/vue-event-card.svg.svg?style=flat">
+  <img src="https://img.shields.io/github/stars/dhruvmisra/vue-event-card.svg?style=flat">
 
   <img src="https://img.shields.io/github/languages/top/dhruvmisra/vue-event-card.svg">
 
